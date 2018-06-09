@@ -3,10 +3,6 @@ package knugel.whoosh.gui;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.awt.*;
 
 public class GuiHandler implements IGuiHandler {
 

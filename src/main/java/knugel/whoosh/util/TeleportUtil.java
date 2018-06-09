@@ -1,6 +1,5 @@
 package knugel.whoosh.util;
 
-import cofh.core.util.RayTracer;
 import knugel.whoosh.item.ItemTransporter;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -195,11 +194,7 @@ public class TeleportUtil {
             return false;
         }
 
-        if(res.getBlockPos().equals(new BlockPos(target))) {
-            return false;
-        }
-
-        return true;
+        return !res.getBlockPos().equals(new BlockPos(target));
     }
 
     // Copied from RFTools

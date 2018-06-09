@@ -3,13 +3,9 @@ package knugel.whoosh.gui;
 import cofh.api.fluid.IFluidContainerItem;
 import cofh.core.gui.GuiContainerCore;
 import cofh.core.gui.element.ElementBase;
-import cofh.core.init.CoreProps;
-import cofh.core.util.helpers.FluidHelper;
 import cofh.core.util.helpers.MathHelper;
 import cofh.core.util.helpers.StringHelper;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 
 import java.util.List;
 

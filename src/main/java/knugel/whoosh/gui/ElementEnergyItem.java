@@ -2,7 +2,6 @@ package knugel.whoosh.gui;
 
 import cofh.core.gui.GuiContainerCore;
 import cofh.core.gui.element.ElementBase;
-import cofh.core.init.CoreProps;
 import cofh.core.util.helpers.MathHelper;
 import cofh.core.util.helpers.RenderHelper;
 import cofh.core.util.helpers.StringHelper;

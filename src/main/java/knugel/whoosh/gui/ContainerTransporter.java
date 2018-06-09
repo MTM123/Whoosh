@@ -2,18 +2,14 @@ package knugel.whoosh.gui;
 
 import cofh.api.core.ISecurable;
 import cofh.core.gui.container.ContainerCore;
-import cofh.core.network.PacketHandler;
 import cofh.core.util.CoreUtils;
 import cofh.core.util.helpers.SecurityHelper;
 import com.mojang.authlib.GameProfile;
-import knugel.whoosh.Whoosh;
 import knugel.whoosh.item.ItemTransporter;
 import knugel.whoosh.network.PacketWhoosh;
 import knugel.whoosh.util.TeleportPosition;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 import java.util.List;
 

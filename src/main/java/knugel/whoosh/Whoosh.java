@@ -5,7 +5,6 @@ import cofh.core.init.CoreProps;
 import cofh.core.network.PacketHandler;
 import cofh.core.util.ConfigHandler;
 import cofh.thermalfoundation.ThermalFoundation;
-import com.jcraft.jogg.Packet;
 import knugel.whoosh.gui.GuiHandler;
 import knugel.whoosh.init.WItems;
 import knugel.whoosh.init.WProps;

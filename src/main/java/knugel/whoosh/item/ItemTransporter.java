@@ -201,7 +201,7 @@ public class ItemTransporter extends ItemMulti implements IInitializer, IMultiMo
             if (canPlayerAccess(stack, player)) {
 
                 long lastUsed = getLastUsed(stack);
-                if(lastUsed != 0 && world.getTotalWorldTime() - lastUsed < cooldownUsage)
+                if(lastUsed != 0 && System.currentTimeMillis() - lastUsed < cooldownUsage)
                     return new ActionResult<>(EnumActionResult.FAIL, stack);
 
                 if(getMode(stack) == 1) {
@@ -232,7 +232,7 @@ public class ItemTransporter extends ItemMulti implements IInitializer, IMultiMo
                                 extractEnergy(stack, rfCost, false);
                                 drain(stack, fluidCost, true);
                                 world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.NEUTRAL, 0.5f, 1f);
-                                setLastUsed(stack, world.getTotalWorldTime());
+                                setLastUsed(stack);
                             }
                         }
                     }
@@ -261,7 +261,7 @@ public class ItemTransporter extends ItemMulti implements IInitializer, IMultiMo
                             extractEnergy(stack, rfCost, false);
                             drain(stack, fluidCost, true);
                             world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.NEUTRAL, 0.5f, 1f);
-                            setLastUsed(stack, world.getTotalWorldTime());
+                            setLastUsed(stack);
                         }
                     }
                     else {
@@ -365,13 +365,13 @@ public class ItemTransporter extends ItemMulti implements IInitializer, IMultiMo
         tag.setInteger("Selected", index);
     }
 
-    public static void setLastUsed(ItemStack stack, long time) {
+    public static void setLastUsed(ItemStack stack) {
 
         if(!stack.hasTagCompound())
             return;
 
         NBTTagCompound tag = stack.getTagCompound();
-        tag.setLong("LastUsed", time);
+        tag.setLong("LastUsed", System.currentTimeMillis());
     }
 
     public static void cycleSelected(ItemStack stack, int direction) {
@@ -730,7 +730,10 @@ public class ItemTransporter extends ItemMulti implements IInitializer, IMultiMo
 
         comment = "Adjust this value to change the cooldown (in ticks) between usages.";
         cooldownUsage = BASE_COOLDOWN;
-        cooldownUsage = Whoosh.CONFIG.getConfiguration().getInt("Cooldown", category, cooldownUsage, 0, Integer.MAX_VALUE, comment);
+        cooldownUsage = Whoosh.CONFIG.getConfiguration().getInt("Cooldown", category, (int) cooldownUsage, 0, Integer.MAX_VALUE, comment);
+
+        // Convert to miliseconds after loading
+        cooldownUsage = Math.round(cooldownUsage / 20.0 * 1000);
 
         comment = "Require sneaking to teleport.";
         requireSneaking = true;
@@ -799,7 +802,7 @@ public class ItemTransporter extends ItemMulti implements IInitializer, IMultiMo
     public static int teleportBlockCost;
     public static int teleportBlockBlinkCost;
     public static int teleportFluidBlinkCost;
-    public static int cooldownUsage;
+    public static long cooldownUsage;
     public static boolean requireSneaking;
 
     /* REFERENCES */

@@ -1,9 +1,10 @@
 buildscript {
 	repositories {
+		mavenCentral()
 		jcenter()
 		maven {
 			name = "forge"
-			url = "http://files.minecraftforge.net/maven"
+			url = "https://files.minecraftforge.net/maven"
 		}
 	}
 	dependencies {
@@ -32,6 +33,7 @@ configFile.withReader {
 }
 
 repositories {
+	mavenCentral()
 	maven {
 		name = "CoFH Maven"
 		url = "http://maven.covers1624.net"
